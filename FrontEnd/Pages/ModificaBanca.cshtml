@@ -1,0 +1,39 @@
+﻿@page
+@model FrontEnd.Pages.ModificaBancaModel
+@{
+}
+<div class="row">
+    <div class="col-md-6">
+        <h2>
+            Banche
+        </h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Attiva</th>
+                </tr>
+            </thead>
+            @foreach (var i in await Model.Funzionalitas)
+            {
+                <tr>
+                    <td>@i.nome</td>
+                    @{
+                        var banca = await Model.Banca;
+                        <td><input type="checkbox" checked="@((await Model.BancheFunzionalitas).FirstOrDefault(x => x.idFunzionalita == i.id && x.idBanca == banca.id) != null)"></td>
+                    }
+                </tr>
+            }
+        </table>
+        <button type="button" onclick="OnSaveButton()">Salva Modifiche</button>
+    </div>
+</div>
+
+<script>
+    function OnSaveButton() 
+    {
+        @{
+            Model.OnSaveButton();
+        }
+    }
+</script>
