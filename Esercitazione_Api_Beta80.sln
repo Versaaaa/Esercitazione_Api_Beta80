@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esercitazione_Api_Beta80", "Esercitazione_Api_Beta80\Esercitazione_Api_Beta80.csproj", "{28856D02-538A-4F30-8DEF-A65907358781}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{991F327C-F01D-440A-BBEB-E89F5757E8DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esercitazione_Api_Beta80", "Esercitazione_Api_Beta80\Esercitazione_Api_Beta80.csproj", "{28856D02-538A-4F30-8DEF-A65907358781}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{28856D02-538A-4F30-8DEF-A65907358781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28856D02-538A-4F30-8DEF-A65907358781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28856D02-538A-4F30-8DEF-A65907358781}.Release|Any CPU.Build.0 = Release|Any CPU
-		{991F327C-F01D-440A-BBEB-E89F5757E8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{991F327C-F01D-440A-BBEB-E89F5757E8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{991F327C-F01D-440A-BBEB-E89F5757E8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{991F327C-F01D-440A-BBEB-E89F5757E8DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
