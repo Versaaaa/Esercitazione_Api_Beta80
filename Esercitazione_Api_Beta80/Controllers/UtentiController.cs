@@ -90,6 +90,10 @@ namespace Esercitazione_Api_Beta80.Controllers
         {
             try
             {
+                if(utente.Password == "")
+                {
+                    utente.Password = (await _rep.GetById(id)).Password;
+                }
                 await _rep.Put(id, utente);
                 return await Get(id);
             }

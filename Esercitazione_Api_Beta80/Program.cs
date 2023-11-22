@@ -1,14 +1,25 @@
 using Esercitazione_Api_Beta80.Contexts;
 using Esercitazione_Api_Beta80.Controllers;
 using Esercitazione_Api_Beta80.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    // default policy 
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin();
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -41,6 +52,10 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseCors();
+
 app.MapControllers();
+
+app.MapGet("/check", [EnableCors] () => "hello api check");
 
 app.Run();

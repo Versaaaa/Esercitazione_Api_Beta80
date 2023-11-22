@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <h1 mat-dialog-title>Modifica Utente</h1>
+  </div>
+  <div class="row">
+    <table class="table m-0">
+      <thead class="">
+        <tr>
+          <th>
+            Nome Utente
+          </th>
+          <th>
+            Banca
+          </th>
+          <th>
+            Password
+          </th>
+          <th>
+            Bloccato
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <td class="p-2 align-middle">{{data.nomeUtente}}</td>
+        <td class="p-2 align-middle">{{data.banca}}</td>
+        <td class="p-2 align-middle"><input class="form-control" placeholder="password" #password></td>
+        <td class="p-2 align-middle">
+          <select class="form-control col-12" #blocked>
+            <option value="false">Non Bloccato</option>
+            <option value="true">Bloccato</option>
+          </select>
+        </td>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="undefined" class="btn btn-light me-3">Annulla</button>
+      <button mat-button cdkFocusInitial (click)="getResult(data.id, password.value, blocked.value)" class="btn btn-primary">Conferma</button>
+    </div>
+  </div>
+</div>

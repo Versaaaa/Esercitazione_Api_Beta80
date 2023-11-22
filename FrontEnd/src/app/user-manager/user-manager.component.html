@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 p-0" style="max-height: 100vh;">
+            <h1 class="m-1">Aggiungi Utente</h1>
+            <div class="card p-2">
+                <div class="form-group mb-3">
+                    <label>Banca</label>
+                    <select class="col-12 form-control" #bank>
+                        <option *ngFor="let row of banks" value="{{row.id}}">{{row.nome}}</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Nome Utente</label>
+                    <input class="form-control" [(ngModel)]="username" placeholder="Username">
+                </div>
+                <div class="form-group mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password">
+                </div>
+                <button mat-raised-button class="btn btn-primary" (click)="submit(bank.value)">Aggiungi Utente</button>
+            </div>
+        </div>
+        <div class="col-lg-8 p-0">
+            <div class="hidden-scrollbar card p-0" style="max-height: 100vh; overflow-y:scroll">
+                <table class="table table-hover table-bordered m-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Nome Utente
+                            </th>
+                            <th>
+                                Banca
+                            </th>
+                            <th>
+                                Bloccato
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of data; index as i">
+                            <td>{{i + 1}}</td>
+                            <td>{{row.nomeUtente}}</td>
+                            <td>{{row.banca}}</td>
+                            <td>{{row.bloccato ? "Bloccato" : "Non Bloccato"}}</td>
+                            <td style="max-width: 18vh;">
+                                <div class="row p-0 m-0">
+                                    <div class="col-md-6 p-1">
+                                        <button class="col-12 btn btn-primary btn-sm" (click)="update(row)">Modifica</button>
+                                    </div>
+                                    <div class="col-md-6 p-1">
+                                        <button mat-raised-button class="col-12 btn btn-primary btn-sm" (click)="delete(row)">Elimina</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
