@@ -2,6 +2,7 @@
 using Esercitazione_Api_Beta80.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 
 namespace Esercitazione_Api_Beta80.Controllers
 {
@@ -28,6 +29,28 @@ namespace Esercitazione_Api_Beta80.Controllers
                     res.Add(new BancheFunzionalitaModel(i));
                 }
                 return Ok(res);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByBankId(int id)
+        {
+            try
+            {
+                var res = new List<BancheFunzionalitaModel>();
+                foreach (var i in await _rep.GetByBankId(id))
+                {
+                    res.Add(new BancheFunzionalitaModel(i));
+                }
+                return Ok(res);
+            }
+            catch (InvalidOperationException)
+            {
+                return NotFound("Id non trovato");
             }
             catch
             {

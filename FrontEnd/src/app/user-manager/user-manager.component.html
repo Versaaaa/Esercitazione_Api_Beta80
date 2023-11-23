@@ -17,6 +17,10 @@
                     <label>Password</label>
                     <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password">
                 </div>
+                <div class="form-group mb-3">
+                    <label>Verifica Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="verify_password" placeholder="Password">
+                </div>
                 <button mat-raised-button class="btn btn-primary" (click)="submit(bank.value)">Aggiungi Utente</button>
             </div>
         </div>

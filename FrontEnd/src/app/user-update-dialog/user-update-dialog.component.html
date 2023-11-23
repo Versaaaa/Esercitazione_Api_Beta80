@@ -16,6 +16,9 @@
             Password
           </th>
           <th>
+            Verifica Password
+          </th>
+          <th>
             Bloccato
           </th>
         </tr>
@@ -23,7 +26,8 @@
       <tbody>
         <td class="p-2 align-middle">{{data.nomeUtente}}</td>
         <td class="p-2 align-middle">{{data.banca}}</td>
-        <td class="p-2 align-middle"><input class="form-control" placeholder="password" #password></td>
+        <td class="p-2 align-middle"><input type="password" class="form-control" placeholder="password" #password></td>
+        <td class="p-2 align-middle"><input type="password" class="form-control" placeholder="password" #verify_password></td>
         <td class="p-2 align-middle">
           <select class="form-control col-12" #blocked>
             <option value="false">Non Bloccato</option>
@@ -36,7 +40,7 @@
   <div class="row">
     <div mat-dialog-actions align="end">
       <button mat-button [mat-dialog-close]="undefined" class="btn btn-light me-3">Annulla</button>
-      <button mat-button cdkFocusInitial (click)="getResult(data.id, password.value, blocked.value)" class="btn btn-primary">Conferma</button>
+      <button mat-button cdkFocusInitial (click)="getResult(data.id, password.value, verify_password.value, blocked.value)" class="btn btn-primary">Conferma</button>
     </div>
   </div>
 </div>

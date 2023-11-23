@@ -2,6 +2,7 @@
 using Esercitazione_Api_Beta80.Entities;
 using Esercitazione_Api_Beta80.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace Esercitazione_Api_Beta80.Repositories
 {
@@ -18,12 +19,25 @@ namespace Esercitazione_Api_Beta80.Repositories
         {
             return await _context.Banche_Funzionalita.OrderBy(x => x.Id).ToListAsync();
         }
+        
+        public async Task<ICollection<BancheFunzionalita>> GetByBankId(int id)
+        {
+            return await _context.Banche_Funzionalita.Where(x => x.IdBanca == id).OrderBy(x => x.Id).ToListAsync();
+        }
 
         public async Task<BancheFunzionalita> Post(BancheFunzionalitaModel model)
         {
 
             var banca = await _context.Banche.FirstAsync(x => x.Id == model.IdBanca);
             var funzionalita = await _context.Funzionalita.FirstAsync(x => x.Id == model.IdFunzionalita);
+
+            Debug.WriteLine("ciao");
+            Debug.WriteLine("ciao");
+            Debug.WriteLine("ciao");
+            Debug.WriteLine("ciao");
+            Debug.WriteLine("ciao");
+            Debug.WriteLine("ciao");
+            Debug.WriteLine("ciao");
 
             var res = new BancheFunzionalita()
             {

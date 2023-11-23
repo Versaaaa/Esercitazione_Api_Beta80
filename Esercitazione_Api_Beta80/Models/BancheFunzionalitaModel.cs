@@ -6,7 +6,12 @@ namespace Esercitazione_Api_Beta80.Models
     {
         public long IdBanca { get; set; }
         public long IdFunzionalita { get; set; }
-        
+
+        public BancheFunzionalitaModel()
+        {
+            
+        }
+
         public BancheFunzionalitaModel(BancheFunzionalita input)
         {
             IdBanca = input.IdBanca;

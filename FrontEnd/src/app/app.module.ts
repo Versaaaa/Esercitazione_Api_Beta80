@@ -11,6 +11,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { UserManagerComponent } from './user-manager/user-manager.component';
 import { UserUpdateDialogComponent } from './user-update-dialog/user-update-dialog.component';
 import { UserDeleteDialogComponent } from './user-delete-dialog/user-delete-dialog.component';
+import { FunctionalityManagerComponent } from './functionality-manager/functionality-manager.component';
+import { BankFunctionalityManagerComponent } from './bank-functionality-manager/bank-functionality-manager.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UserDeleteDialogComponent } from './user-delete-dialog/user-delete-dial
     WelcomePageComponent,
     UserManagerComponent,
     UserUpdateDialogComponent,
-    UserDeleteDialogComponent
+    UserDeleteDialogComponent,
+    FunctionalityManagerComponent,
+    BankFunctionalityManagerComponent
   ],
   imports: [
     BrowserModule,

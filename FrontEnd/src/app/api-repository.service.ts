@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
@@ -16,9 +16,53 @@ export class ApiRepositoryService {
     this.httpClient = httpClient;
   }
 
+  GetFunctionalities(): Observable<any> {
+    let res;
+    res = this.httpClient.get(this.baseUrl + "/Funzionalita");  
+    return res;
+  }
+
+  GetFunctionalitiesByBankId(id: number): Observable<any> {
+    let res;
+    res = this.httpClient.get(this.baseUrl + `/BancheFunzionalita/${id}`);  
+    return res;
+  }
+
+  async PostBankFunction(bankId: number, functionId: number): Promise<any> {
+    let res; 
+    let body = {
+      idBanca : bankId,
+      idFunzionalita: functionId
+    }
+
+    console.log(body);
+
+    await this.httpClient.post(this.baseUrl + "/BancheFunzionalita", body).toPromise().then(x => res = x).catch(x=> res = x);
+    return res;
+
+  }
+
+  async DeleteBankFunction(bankId: number, functionId: number): Promise<any> {
+    let res; 
+    let options = {
+      body: {
+        idBanca : bankId,
+        idFunzionalita: functionId
+      }
+    }
+    await this.httpClient.delete(this.baseUrl + "/BancheFunzionalita", options).toPromise().then(x => res = x).catch(x => res = x);
+    return res; 
+  }
+
   GetBanks(): Observable<any> {
     let res;
     res = this.httpClient.get(this.baseUrl + "/Banche");  
+    return res;
+  }
+
+  getBank(bankId: number): Observable<any> {
+    let res;
+    res = this.httpClient.get(this.baseUrl + "/Banche/" + bankId)
     return res;
   }
 

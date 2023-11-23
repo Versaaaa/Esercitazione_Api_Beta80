@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 p-1">
+            <div class="hidden-scrollbar card p-0" style="max-height: 100vh; overflow-y:scroll">
+                <table class="table table-hover table-bordered m-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Banca
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of banks; index as i">
+                            <td>{{i + 1}}</td>
+                            <td>{{row.nome}}</td>
+                            <td style="max-width: 18vh;">
+                                <div class="row p-0 m-0">
+                                    <a class="col-12 btn btn-primary btn-sm" [routerLink]="[row.id]">Modifica</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 p-1" style="max-height: 100vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

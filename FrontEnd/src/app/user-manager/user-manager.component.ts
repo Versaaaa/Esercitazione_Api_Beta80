@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ApiRepositoryService } from '../api-repository.service';
 import { HttpResponseBase } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { UserUpdateDialogComponent } from '../user-update-dialog/user-update-dialog.component';
 import { UserDeleteDialogComponent } from '../user-delete-dialog/user-delete-dialog.component';
+import { ApiRepositoryService } from '../api-repository.service';
 
 @Component({
   selector: 'app-user-manager',
@@ -25,6 +25,7 @@ export class UserManagerComponent {
 
   username: string = "";
   password: string = "";
+  verify_password: string = "";
 
   constructor (public repo: ApiRepositoryService, public dialog: MatDialog) {
     this.banksObs = this.repo.GetBanks();
@@ -43,23 +44,30 @@ export class UserManagerComponent {
       console.log("errore");
     }
     else{
-      this.res_msg = "";
-      this.repo.PostUsers(Number(bankId), this.username, this.password).then((res) => 
-      {
-        if(res.error as HttpResponseBase) {
-          console.log(res);
-          this.res_msg = res.error;
-        }
-        else{
-          console.log("Successo");
-          this.loadObservables();
-          this.res_msg = "Utente creato con Successo";
-
-          this.username = "";
-          this.password = "";
-
-        }
-      });
+      if(this.password == this.verify_password) {
+        this.res_msg = "";
+        this.repo.PostUsers(Number(bankId), this.username, this.password).then((res) => 
+        {
+          if(res.error as HttpResponseBase) {
+            console.log(res);
+            this.res_msg = res.error;
+          }
+          else{
+            console.log("Successo");
+            this.loadObservables();
+            this.res_msg = "Utente creato con Successo";
+  
+            this.username = "";
+            this.password = "";
+            this.verify_password = "";
+  
+          }
+        });
+      }
+      else{
+        this.res_msg = "Password non combaciano";
+        console.log("errore");
+      }
     }
   }
 

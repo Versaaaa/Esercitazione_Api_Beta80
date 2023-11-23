@@ -15,9 +15,11 @@ export class UserUpdateDialogComponent{
 
   }
 
-  getResult(id: number, password: string, bloccato: string) 
+  getResult(id: number, password: string, verify_password: string, bloccato: string) 
   {
-    this.result = {id: id, password: password, bloccato: bloccato == "true"}
-    this.dialogRef.close(this.result);
+    if(verify_password == password) {
+      this.result = {id: id, password: password, bloccato: bloccato == "true"}
+      this.dialogRef.close(this.result);
+    }
   }
 }

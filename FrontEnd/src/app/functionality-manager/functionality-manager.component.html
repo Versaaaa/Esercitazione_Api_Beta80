@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="hidden-scrollbar card p-0" style="max-height: 85vh; overflow-y:scroll">
+        <table class="table table-bordered p-0 m-0">
+            <thead>
+                <tr>
+                    <th>
+                        Funzionalità
+                    </th>
+                    <th>
+                        Attiva
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of functionalities">
+                    <td>{{row.nome}}</td>
+                    <td><input class="align-middle" type="checkbox" [ngModel]="findCheckbox(row.id)" (ngModelChange)="toggleCheckbox(row.id)"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-primary float-end mt-3" (click)="update()">Salva Modifiche</button>
+</div>
